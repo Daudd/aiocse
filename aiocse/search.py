@@ -60,7 +60,7 @@ class Client:
         self.api_keys = api_keys
         self.engine_id = engine_id
         self.image_engine_id = image_engine_id
-        self.session = session
+        self.session = session or aiohttp.ClientSession()
 
     def __repr__(self) -> str:
         return "<aiocse.search.Search object engine_id={0.engine_id!r}>".format(self)
@@ -108,8 +108,8 @@ class Client:
 
         while self.api_keys:
             key = self.api_keys if not shuffle else random.choice(self.api_keys)
-            if not self.session:
-                self.session = aiohttp.ClientSession()  # session for making requests
+            if self.session.closed:
+                self.session = aiohttp.ClientSession() # make a new session
 
             params = {
                 'key': key,

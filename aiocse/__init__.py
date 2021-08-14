@@ -23,8 +23,8 @@ SOFTWARE.
 """
 
 import logging
+from .client import *
 from .errors import *
 from .result import *
-from .search import *
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())

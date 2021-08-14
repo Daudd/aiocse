@@ -10,7 +10,7 @@ with open('README.md') as f:
 
 setuptools.setup(
     name = 'aiocse',
-    version = '1.0',
+    version = '1.0.1',
     description = 'A Python wrapper for the Google Custom Search JSON API.',
     long_description = readme,
     long_description_content_type = 'text/markdown',
